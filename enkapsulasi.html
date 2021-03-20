@@ -38,7 +38,10 @@ strong {
   color: #fe8019;
 }
 
-img {margin-left:auto;margin-right: auto; max-width:100%;} </style> </head> <body> <h2 id="プログラミング">プログラミング</h2>
+img {margin-left:auto;margin-right: auto; max-width:100%;}
+
+a {color:#83a598;}
+a:visited {color:#d3869b;} </style> </head> <body> <h2 id="プログラミング">プログラミング</h2>
 <h1 id="enkapsulasi">Enkapsulasi</h1>
 <p><img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.QP2VMT-tQFH-mCIdIFq2ugHaEo%26pid%3DApi&amp;f=1" alt=""></p>
 <p>Oleh: <strong>Avrilian Briliansyah</strong></p>
@@ -57,9 +60,9 @@ img {margin-left:auto;margin-right: auto; max-width:100%;} </style> </head> <bod
 }
 </code></pre>
 <h3 id="macam-macam-access-modifier">Macam-macam Access Modifier</h3>
-<h3 id="1-private">1. private</h3>
+<h3 id="1-private">1. <code>private</code></h3>
 <p>Artinya atribut dari class hanya dapat diakses oleh method dalam kelas itu sendiri.</p>
-<h3 id="2-protected">2. protected</h3>
+<h3 id="2-protected">2. <code>protected</code></h3>
 <p>Artinya atribut dari class bisa diakses oleh method dari child class. Contoh:</p>
 <pre><code class="language-java">class Animal {
     protected void eat(){
@@ -77,9 +80,9 @@ class Cat extends Animal {
     }
 }
 </code></pre>
-<h3 id="3-default">3. default</h3>
+<h3 id="3-default">3. <code>default</code></h3>
 <p>Inilah access modifier yang diberikan apabila anda tidak menulisnya secara eksplisit. Atribut dari class ini dapat diakes dari class lain yang satu package.</p>
-<h3 id="4-public">4. public</h3>
+<h3 id="4-public">4. <code>public</code></h3>
 <p>Artinya atribut dapat diakses dari kelas mana saja.</p>
 <p>Berikut tabel:</p>
 <table>
@@ -130,9 +133,24 @@ class Cat extends Animal {
         name = arg;
     }
 }
+
+public Main {
+    public static void main(String [] args) {
+
+        Cat obj = new Cat(&quot;Veronika&quot;);
+
+        System.out.println(obj.name);
+    }
+}
 </code></pre>
+<p>Output:</p>
+<blockquote>
+<p><code>Veronika</code></p>
+</blockquote>
 <h2 id="4-contoh-implementasi-enkapsulasi">4. Contoh Implementasi Enkapsulasi</h2>
 <p>Berikut kode:</p>
 <p><img src="./enkapsulasi-contoh.png" alt="Contoh enkapsulasi"></p>
 <p>Hasil dari kode diatas:</p>
-<p><img src="./enkapsulasi-output.png" alt="Output"></p> </body> </html>
+<p><img src="./enkapsulasi-output.png" alt="Output"></p>
+<h3 id="sumber-dan-referensi">Sumber dan Referensi</h3>
+<p><a href="https://stackify.com/oop-concept-for-beginners-what-is-encapsulation/">https://stackify.com/oop-concept-for-beginners-what-is-encapsulation/</a><br><a href="https://www.javatpoint.com/inheritance-in-java">https://www.javatpoint.com/inheritance-in-java</a><br><a href="https://www.w3schools.com/java/java_constructors.asp">https://www.w3schools.com/java/java_constructors.asp</a>  </p> </body> </html>
