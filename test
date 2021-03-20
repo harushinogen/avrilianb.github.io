@@ -1,0 +1,40 @@
+<!DOCTYPE html><html><head><meta name="viewport" content="width=device-width,initial-scale=1"><title>Enkapsulasi</title><style>html{margin-left:auto;margin-right:auto;max-width:800px;color:#fbf1c7;background-color:#1d2021;font-size:1em;text-align:justify}pre{font-size:1.3em;color:#d5c4a1;background-color:#282828;padding:10px;overflow-x:auto}h1{font-size:2em;color:#fb4934}h2{font-size:1.5em;color:#fabd2f}h3{font-size:1.25em;color:#8ec07c}h1,h2,h3{text-align:left}h1 code{font-size:30px}h2 code{font-size:24px}h3 code{font-size:20px}table{width:100%;border-collapse:collapse;overflow-x:auto;font-size:14px}td{padding-left:10px;border:1px #bdae93 solid}th{color:#ebdbb2;border:1px #bdae93 solid}strong{color:#fe8019}img{margin-left:auto;margin-right:auto;max-width:100%}a{color:#83a598}a:visited{color:#d3869b}</style></head><body><h2 id="プログラミング">プログラミング</h2><h1 id="enkapsulasi">Enkapsulasi</h1><p><img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.QP2VMT-tQFH-mCIdIFq2ugHaEo%26pid%3DApi&amp;f=1" alt=""></p><p>Oleh: <strong>Avrilian Briliansyah</strong></p><h2 id="1-enkapsulasi">1. Enkapsulasi</h2><p>Adalah sebuah teknik penyembunyian informasi dari luar objek. Kalau kita mempunyai informasi atribut di dalam objek yang tidak bisa diakses dari luar objek, lalu kita menambahkan getter dan setter sebagai sarana untuk menulis dan membaca informasi yang ada didalam objek, maka kita dapat menyembunyikan beberapa informasi dan mengontrol bagaimana pengaksesan data dilakukan.</p><h2 id="2-access-modifier">2. Access Modifier</h2><p>Access modifier digunakan untuk menyesuaikan objek-objek mana saja yang bisa mengakses objek atau atribut-atributnya.</p><p>Misalkan kita ingin membuat atribut <code>age</code> pada objek dari class <code>Cat</code> hanya bisa diakses oleh method dari dalam objek itu sendiri, kita bisa menambahkan access modifier <code>private</code>:</p><pre><code class="language-java">class Cat {
+    private String name;
+    // ----
+
+    String getName() {
+        return name;
+    }
+}
+</code></pre><h3 id="macam-macam-access-modifier">Macam-macam Access Modifier</h3><h3 id="1-private">1. <code>private</code></h3><p>Artinya atribut dari class hanya dapat diakses oleh method dalam kelas itu sendiri.</p><h3 id="2-protected">2. <code>protected</code></h3><p>Artinya atribut dari class bisa diakses oleh method dari child class. Contoh:</p><pre><code class="language-java">class Animal {
+    protected void eat(){
+    // ----
+    }
+}
+
+class Cat extends Animal {
+    private String name;
+    // ----
+
+    void live() {
+        eat();
+        // ---
+    }
+}
+</code></pre><h3 id="3-default">3. <code>default</code></h3><p>Inilah access modifier yang diberikan apabila anda tidak menulisnya secara eksplisit. Atribut dari class ini dapat diakes dari class lain yang satu package.</p><h3 id="4-public">4. <code>public</code></h3><p>Artinya atribut dapat diakses dari kelas mana saja.</p><p>Berikut tabel:</p><table><thead><tr><th>Modifier</th><th>Class</th><th>Package</th><th>Subclass</th><th>Other Classes</th></tr></thead><tbody><tr><td>Private</td><td>Yes</td><td>No</td><td>No</td><td>No</td></tr><tr><td>Default</td><td>Yes</td><td>Yes</td><td>No</td><td>No</td></tr><tr><td>Protected</td><td>Yes</td><td>Yes</td><td>Yes</td><td>No</td></tr><tr><td>Public</td><td>Yes</td><td>Yes</td><td>Yes</td><td>Yes</td></tr></tbody></table><h2 id="3-constructor">3. Constructor</h2><p>Constructor adalah method spesial yang dipanggil saat java menginisialisasi objek. Constructor juga dapat digunakan untuk memberi nilai awal pada atribut yang ada pada class.</p><pre><code class="language-java">class Cat {
+    String name;
+
+    public Cat(String arg) {
+        name = arg;
+    }
+}
+
+public Main {
+    public static void main(String [] args) {
+
+        Cat obj = new Cat(&quot;Veronika&quot;);
+
+        System.out.println(obj.name);
+    }
+}
+</code></pre><p>Output:</p><blockquote><p><code>Veronika</code></p></blockquote><h2 id="4-contoh-implementasi-enkapsulasi">4. Contoh Implementasi Enkapsulasi</h2><p>Berikut kode:</p><p><img src="./images/enkapsulasi-contoh.png" alt="Contoh enkapsulasi"></p><p>Hasil dari kode diatas:</p><p><img src="./images/enkapsulasi-output.png" alt="Output"></p><h3 id="sumber-dan-referensi">Sumber dan Referensi</h3><ul><li><a href="https://stackify.com/oop-concept-for-beginners-what-is-encapsulation/">Stackify</a></li><li><a href="https://www.javatpoint.com/inheritance-in-java">javaTpoint</a></li><li><a href="https://www.w3schools.com/java/java_constructors.asp">W3School</a></li></ul></body></html>
