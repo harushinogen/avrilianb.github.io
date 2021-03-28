@@ -1,0 +1,84 @@
+<!DOCTYPE html><html><head><meta name="viewport" content="width=device-width,initial-scale=1"><title>Inheritance</title><style>html{margin-left:auto;margin-right:auto;max-width:800px;color:#fbf1c7;background-color:#1d2021;font-size:1em;text-align:justify}pre{font-size:1.3em;color:#d5c4a1;background-color:#282828;padding:10px;overflow-x:auto}h1{font-size:2em;color:#fb4934}h2{font-size:1.5em;color:#fabd2f}h3{font-size:1.25em;color:#8ec07c}h1,h2,h3{text-align:left}h1 code{font-size:30px}h2 code{font-size:24px}h3 code{font-size:20px}table{width:100%;border-collapse:collapse;overflow-x:auto;font-size:14px}td{padding-left:10px;border:1px #bdae93 solid}th{color:#ebdbb2;border:1px #bdae93 solid}strong{color:#fe8019}img{margin-left:auto;margin-right:auto;max-width:100%}a{color:#83a598}a:visited{color:#d3869b}strong code{font-size:1.2em}</style></head><body><h2 id="プログラミング">プログラミング</h2><h1 id="inheritance">Inheritance</h1><p><img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.XoT4m9X7l-cVUhSUJ18gzgHaEK%26pid%3DApi&f=1" alt="Gambar Header"></p><p>Oleh: <strong>Avrilian Briliansyah</strong></p><h2 id="konsep">Konsep</h2><p>Inheritance adalah suatu konsep di OOP dimana anda dapat membuat class dengan yang pada dasarnya adalah turunan dari class lain. Class yang merupakan turunan dari class lain memiliki atribut dari class yang mewariskan dan dapat pula ditambah dengan atribut tambahan.</p><p>Class yang mewariskan disebut dengan <em>superclass</em> dan class yang menerima pewarisan disebut dengan <em>subclass</em>.</p><h2 id="cara-kerja-inheritance">Cara Kerja Inheritance</h2><p>Suatu subclass yang menerima pewarisan dari superclass-nya akan bisa menggunakan field- field serta method-method dari superclass-nya, selama acces modifiernya memenuhi syarat untuk itu. Misalkan dalam Game, kita akan membuat class-class musuh dengan perilaku yang berbeda.</p><p><img src="./images/Diagram.png" alt="Diagram"></p><p>Lalu kita membuat kode untuk masing-masing kelas seperti ini :</p><p>File: <strong><code>Zombie.java</code></strong></p><pre><code class="language-java">class Zombie {
+    String name;
+    int hp;
+    int attackPoint;
+
+    void attack(){
+        // ...
+    }
+
+    void walk(){
+        // ...
+    }
+}
+</code></pre><p>File: <strong><code>Pocong.java</code></strong></p><pre><code class="language-java">class Pocong {
+   String name;
+   int hp;
+   int attackPoint;
+
+   void attack(){
+       // ...
+   }
+
+   void jump(){
+       // ...
+   }
+}
+</code></pre><p>File: <strong><code>Burung.java</code></strong></p><pre><code class="language-java">class Burung {
+   String name;
+   int hp;
+   int attackPoint;
+
+   void attack(){
+       // ...
+   }
+
+   void walk(){
+       // ...
+   }
+
+   void jump(){
+       // ...
+   }
+
+   void fly(){
+       // ...
+   }
+}
+</code></pre><p>Kalau kita perhatikan contoh diatas kita mendapati kalau kita menulis ulang hal yang sama beberapa kali.</p><p>Kita bisa menggunakan inheritance untuk menghindari hal tersebut.</p><p>Mari kita lihat member class yang sama:</p><p><img src="./images/diagram-selected.png" alt="Diagram"></p><p>Setelah menggunakan inheritance, maka akan menjadi seperti ini:</p><p><img src="./images/diagram-arrow.png" alt="Diagram"></p><p>Class Enemy kini menjadi superclass untuk kelas <strong><code>Zombie</code></strong>, <strong><code>Pocong</code></strong>, dan <strong><code>Burung</code></strong>.</p><p>Kita akan menggunakan kata kunci <strong><code>extends</code></strong> ke <strong><code>Enemy</code></strong> untuk membuat class turunannya.</p><p>Bentuk kodenya akan seperti ini:</p><p>File: <strong><code>Enemy.java</code></strong></p><pre><code class="language-java">class Enemy {
+    String name;
+    int hp;
+    int attackPoint;
+
+    void attack(){
+        // ...
+    }
+}
+</code></pre><p>File: <strong><code>Zombie.java</code></strong></p><pre><code class="language-java">class Zombie extends Enemy {
+    void walk(){
+        // ...
+    }
+}
+</code></pre><p>File: <strong><code>Pocong.java</code></strong></p><pre><code class="language-java">class Pocong extends Enemy {
+    void jump(){
+        // ...
+    }
+}
+</code></pre><p>File: <strong><code>Burung.java</code></strong></p><pre><code class="language-java">class Burung extends Enemy {
+    void walk(){
+        // ...
+    }
+
+    void jump(){
+        // ...
+    }
+
+    void fly(){
+        // ...
+    }
+}
+</code></pre><p>Lalu, bila ingin membuat objek dari class-class tersebut, kita bisa membuatnya seperti ini:</p><pre><code class="language-java">Enemy monster = new Enemy();
+Zombie zombi = new Zombie();
+Pocong jefri = new Pocong();
+Burung kecil = new Burung();
+</code></pre><h2 id="membuat-program-inheritance">Membuat Program Inheritance</h2><p>Program yang akan kita buat untuk berfungsi untuk menghitung luas dan keliling bangun datar. Bentuk class diagramnya seperti ini :</p><p><img src="./images/diagram-bangun.png" alt="Diagram Bangun Datar"></p><p>File: <strong><code>inheritance/Persegi.java</code></strong></p><p><img src="./images/inheritance-psg.png" alt=""></p><p>File: <strong><code>inheritance/Lingkaran.java</code></strong></p><p><img src="./images/inheritance-lgkrn.png" alt=""></p><p>File: <strong><code>inheritance/PersegiPanjang.java</code></strong></p><p><img src="./images/inheritance-perpan.png" alt=""></p><p>File: <strong><code>inheritance/Segitiga.java</code></strong></p><p><img src="./images/inheritance-sgtg.png" alt=""></p><p>File: <strong><code>inheritance/Main.java</code></strong></p><p><img src="./images/inheritance-main.png" alt=""></p><p>Output:</p><p><img src="./images/inheritance-output.png" alt=""></p><h2 id="sumber">Sumber</h2><ul><li><a href="https://www.petanikode.com/java-oop-inheritance/">PetaniKode</a></li><li><a href="https://stackify.com/oop-concept-inheritance/">Stackify</a></li></ul></body></html>
