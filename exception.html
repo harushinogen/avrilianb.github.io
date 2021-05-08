@@ -1,0 +1,91 @@
+<!DOCTYPE html><html><head><meta name="viewport" content="width=device-width,initial-scale=1"><title>Exception</title><style>html{margin-left:auto;margin-right:auto;max-width:800px;color:#fbf1c7;background-color:#1d2021;font-size:1em;text-align:justify}pre{font-size:1.3em;color:#d5c4a1;background-color:#282828;padding:10px;overflow-x:auto}h1{font-size:2em;color:#fb4934}h2{font-size:1.5em;color:#fabd2f}h3{font-size:1.25em;color:#8ec07c}h1,h2,h3{text-align:left}h1 code{font-size:30px}h2 code{font-size:24px}h3 code{font-size:20px}table{width:100%;border-collapse:collapse;overflow-x:auto;font-size:14px}td{padding-left:10px;border:1px #bdae93 solid}th{color:#ebdbb2;border:1px #bdae93 solid}strong{color:#fe8019}img{margin-left:auto;margin-right:auto;max-width:100%}a{color:#83a598}a:visited{color:#d3869b}strong code{font-size:1.2em}.hljs{display:block;overflow-x:auto;padding:.5em;background:#282828}.hljs,.hljs-subst{color:#ebdbb2}.hljs-deletion,.hljs-formula,.hljs-keyword,.hljs-link,.hljs-selector-tag{color:#fb4934}.hljs-built_in,.hljs-emphasis,.hljs-name,.hljs-quote,.hljs-strong,.hljs-title,.hljs-variable{color:#83a598}.hljs-attr,.hljs-params,.hljs-template-tag,.hljs-type{color:#fabd2f}.hljs-builtin-name,.hljs-doctag,.hljs-literal,.hljs-number{color:#8f3f71}.hljs-code,.hljs-meta,.hljs-regexp,.hljs-selector-id,.hljs-template-variable{color:#fe8019}.hljs-addition,.hljs-meta-string,.hljs-section,.hljs-selector-attr,.hljs-selector-class,.hljs-string,.hljs-symbol{color:#b8bb26}.hljs-attribute,.hljs-bullet,.hljs-class,.hljs-function,.hljs-function .hljs-keyword,.hljs-meta-keyword,.hljs-selector-pseudo,.hljs-tag{color:#8ec07c}.hljs-comment{color:#928374}.hljs-link_label,.hljs-literal,.hljs-number{color:#d3869b}.hljs-comment,.hljs-emphasis{font-style:italic}.hljs-section,.hljs-strong,.hljs-tag{font-weight:700}</style></head><body><h2 id="プログラミング">プログラミング</h2><h1 id="exception-handling">Exception Handling</h1><p>Oleh: <strong>Avrilian Briliansyah</strong></p><h2 id="exception-dan-error">Exception dan Error</h2><p>Layaknya hidup, dalam pemrograman kita tidak bisa terus berharap bahwa program kita akan selalu berjalan seperti yang kita inginkan. Ketika program berjalan, error atau bug bisa terjadi. Konsekuensinya adalah alur kerja program kita menjadi rusak atau bahkan bisa membuat program kita crash.</p><p>Ketika error terjadi di dalam method, method akan melemparkan object Exception yang berisi informasi tentang error yang terjadi ke runtime system. Runtime system akan mencari menemukan sesuatu untuk menanganinya. Hal ini disebut sebagai <em>exception handler</em> .</p><p>Exception handler akan menangani error yang ada. Dan kita bisa memanfaatkan exception ini untuk menangani error yang mungkin akan terjadi di program kita sesusai dengan keinginan kita.</p><h2 id="keyword">Keyword</h2><h3 id="1-try">1. try</h3><p>Sesuai namanya keyword ini digunakan untuk mencoba menjalankan sebuah block program. <code>try</code> harus dipasangkan dengan <code>catch</code> atau <code>finally</code>.</p><h3 id="2-catch">2. catch</h3><p>Digunakan untuk menangkap kesalahan pada block <code>try</code>.</p><pre><code class="language-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">A</span> </span>{
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>{
+        <span class="hljs-keyword">try</span> {
+            <span class="hljs-keyword">int</span> a = <span class="hljs-number">1</span> / <span class="hljs-number">0</span>;
+            <span class="hljs-comment">// berpotensi untuk menimbulkan kesalahan yaitu</span>
+            <span class="hljs-comment">// pembagian dengan bilangan 0</span>
+            System.out.println(<span class="hljs-string">&quot;perintah selanjutnya&quot;</span>);
+        }
+        <span class="hljs-keyword">catch</span> (Exception kesalahan) {
+            <span class="hljs-comment">// Kode akan dieksekusi apabila terjadi error pada block try</span>
+            System.err.println(kesalahan);
+        }
+    }
+}
+</code></pre><p><code>catch</code> juga dapat digunakan berulang-ulang untuk type exception yang berbeda-beda.</p><pre><code class="language-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">A</span> </span>{
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>{
+        <span class="hljs-keyword">try</span> {
+            <span class="hljs-keyword">int</span> a = <span class="hljs-number">1</span>/<span class="hljs-number">0</span>;
+            <span class="hljs-comment">// berpotensi untuk menimbulkan kesalahan</span>
+            <span class="hljs-comment">// yaitu pembagian dengan bilangan 0</span>
+            System.out.println(<span class="hljs-string">&quot;perintah selanjutnya&quot;</span>);
+        }
+        <span class="hljs-keyword">catch</span>(NullPointerException e) {
+        }
+        <span class="hljs-keyword">catch</span>(ArrayIndexOutOfBoundsException e) {
+        }
+        <span class="hljs-keyword">catch</span>(Exception e) {
+        }
+    }
+}
+</code></pre><h3 id="3-finally">3. finally</h3><p>Adalah blok untuk kode program dimana kode dalam block akan dieksekusi baik saat terdapat error maupun tidak.</p><pre><code class="language-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">A</span> </span>{
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>{
+        <span class="hljs-keyword">try</span> {
+            <span class="hljs-keyword">int</span> a = <span class="hljs-number">1</span>/<span class="hljs-number">0</span>;
+        }
+        <span class="hljs-keyword">catch</span> (Exception e) {
+            System.out.println(“ada kesalahan yang muncul”);
+        }
+        <span class="hljs-keyword">finally</span> {
+            System.out.println(“terima kasih telah menjalankan program”);
+        }
+    }
+}
+</code></pre><h3 id="4-throw">4. throw</h3><p>Diguanakan untuk membuat exception secara manual.</p><pre><code class="language-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">A</span> </span>{
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>{
+        <span class="hljs-keyword">try</span> {
+            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> Exception(<span class="hljs-string">&quot;kesalahan terjadi&quot;</span>);
+        }
+        <span class="hljs-keyword">catch</span>(Exception e) {
+            System.out.println(e);
+        }
+    }
+}
+</code></pre><p><code>throw</code> akan melempar objek bertipe exception dan <code>catch</code> akan menangkapnya.</p><pre><code class="language-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">A</span>
+</span>{
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>{
+        <span class="hljs-keyword">try</span> {
+            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> B();
+            <span class="hljs-comment">//cobalah hilangkan “throw” ganti dengan “new B();” saja</span>
+        }
+        <span class="hljs-keyword">catch</span>(Exception e) {
+            System.out.println(e);
+        }
+    }
+}
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">B</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Exception</span> </span>{
+    B() {
+
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">toString</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> “object dengan tipe kelas B”;
+    }
+}
+</code></pre><p>Diatas, class B me-<code>extends</code> class Exception. Apabila kita me-<code>throw new B()</code> maka <code>B</code> akan ditangkap oleh <code>catch</code>.</p><h3 id="5-throws">5. throws</h3><p><code>throws</code> digunakan pada method yang mungkin menghasilkan suatu kesalahan yang perlu ditangkap.</p><pre><code class="language-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">A</span> </span>{
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>{
+        <span class="hljs-keyword">try</span> {
+            f();
+        }
+        <span class="hljs-keyword">catch</span>(Exception e) {
+            System.out.println(e);
+        }
+    }
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">f</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> NullPointerException,ArrayIndexOutOfBoundsException </span>{
+        <span class="hljs-comment">//implementasi method</span>
+        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> NullPointerException();
+        <span class="hljs-comment">//throw new ArrayIndexOutOfBoundsException();</span>
+    }
+}
+</code></pre><p>Diatas, method <code>f()</code> akan melemparkan exception. Perlu diingat bahwa method yang diberi <code>throws</code> tidak harus selalu melemparkan exception saat dipanggil.</p><h2 id="praktikum">Praktikum</h2><h3 id="percobaan-1">Percobaan 1</h3><p><img src="./images/p1-sb.png" alt=""></p><p><img src="./images/p1-ob.png" alt=""></p><p>Sesudah diperbaiki</p><p><img src="./images/p1-ss.png" alt=""></p><p><img src="./images/p1-os.png" alt=""></p><h3 id="percobaan-2">Percobaan 2</h3><p><img src="./images/p2-sb.png" alt=""></p><p><img src="./images/p2-ob.png" alt=""></p><p>Sesudah diperbaiki</p><p><img src="./images/p2-ss.png" alt=""></p><p><img src="./images/p2-os.png" alt=""></p><h3 id="percobaan-3">Percobaan 3</h3><p><img src="./images/p3-sb.png" alt=""></p><p><img src="./images/p3-ob.png" alt=""></p><p>Sesudah diperbaiki</p><p><img src="./images/p3-ss.png" alt=""></p><p><img src="./images/p3-os.png" alt=""></p><h3 id="percobaan-4">Percobaan 4</h3><p><img src="./images/p4-sb.png" alt=""></p><p><img src="./images/p4-ob.png" alt=""></p><p>Sesudah diperbaiki</p><p><img src="./images/p4-ss.png" alt=""></p><p><img src="./images/p4-os.png" alt=""></p><h3 id="percobaan-5">Percobaan 5</h3><p><img src="./images/p5-s.png" alt=""></p><p><img src="./images/p5-o.png" alt=""></p><p>Pada program diatas <code>try</code> digunakan untuk mencoba melakukan operasi aritmatika yang berpotensi menghasilkan exception. <code>catch</code> digunakan untuk menangkap error tersebut.</p><h3 id="percobaan-6">Percobaan 6</h3><p><img src="./images/p6-s.png" alt=""></p><p><img src="./images/p6-o.png" alt=""></p><p>Pada program diatas <code>try</code> digunakan untuk mencoba memanggil method yang menghasilkan exception. <code>catch</code> digunakan untuk menangkap error tersebut.</p><h3 id="percobaan-7">Percobaan 7</h3><p><img src="./images/p7-s.png" alt=""></p><p><img src="./images/p7-o.png" alt=""></p><p>Pada program diatas <code>try</code> digunakan untuk mencoba melempar exception secara sengaja. <code>catch</code> digunakan untuk menangkap exception tersebut.</p><h3 id="percobaan-8">Percobaan 8</h3><p><img src="./images/p8-sb.png" alt=""></p><p><img src="./images/p8-ob.png" alt=""></p><p>Pada program diatas <code>throws</code> diimplementasikan ke method yang berpotensi untuk menghasilkan exception.</p><p>Setelah class PDelapan diubah</p><p><img src="./images/p8-ss.png" alt=""></p><p><img src="./images/p8-os.png" alt=""></p><h3 id="percobaan-9">Percobaan 9</h3><p><img src="./images/p9-s.png" alt=""></p><p><img src="./images/p9-o.png" alt=""></p><p>Setelah <code>&quot;This is a string&quot;</code> dikosongi</p><p><img src="./images/p9-ss.png" alt=""></p><p><img src="./images/p9-os.png" alt=""></p><h3 id="percobaan-10">Percobaan 10</h3><p><img src="./images/rar-s.png" alt=""></p><p><img src="./images/rar-o.png" alt=""></p><h3 id="percobaan-11">Percobaan 11</h3><p><img src="./images/p11-s.png" alt=""></p><p><img src="./images/p11-o.png" alt=""></p><h3 id="percobaan-12">Percobaan 12</h3><p><img src="./images/p12-s.png" alt=""></p><p><img src="./images/p12-o.png" alt=""></p></body></html>
